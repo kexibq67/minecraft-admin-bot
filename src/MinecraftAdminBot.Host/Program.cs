@@ -1,4 +1,7 @@
 using Telegram.Bot;
+using MinecraftAdminBot.Application.Abstractions;
+using MinecraftAdminBot.Application.Commands;
+using MinecraftAdminBot.Infrastructure.Telegram;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +11,12 @@ var botToken = builder.Configuration["Telegram:Token"]
 
 // Регистрируем ITelegramBotClient как Singleton
 builder.Services.AddSingleton<ITelegramBotClient>(new TelegramBotClient(botToken));
+
+//Регистрация команд бота
+builder.Services.AddScoped<ITelegramCommand, PingCommand>();
+
+//Регистрируем диспетчер команд
+builder.Services.AddScoped<CommandDispatcher>();
 
 var app = builder.Build();
 
