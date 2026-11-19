@@ -27,4 +27,15 @@ app.MapPost("/bot/webhook", async (Update update, CommandDispatcher dispatcher, 
     return Results.Ok();
 });
 
+var botClient = app.Services.GetRequiredService<ITelegramBotClient>();
+
+//url должен быть публичным и иметь https
+var webhookUrl = builder.Configuration["Telegram:WebhookUrl"];
+if (!string.IsNullOrEmpty(webhookUrl))
+{
+    //устанавливаем вебхук, allowedUpdates можно не указывать, если хотим получать все
+    await botClient.SetWebhook(webhookUrl, cancellationToken: CancellationToken.None);
+    Console.WriteLine($"Webhook set to: {webhookUrl}");
+}
+
 app.Run();
