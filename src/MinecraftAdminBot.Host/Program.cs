@@ -34,6 +34,7 @@ var webhookUrl = builder.Configuration["Telegram:WebhookUrl"];
 if (!string.IsNullOrEmpty(webhookUrl))
 {
     //устанавливаем вебхук, allowedUpdates можно не указывать, если хотим получать все
+    //test
     await botClient.SetWebhook(webhookUrl, cancellationToken: CancellationToken.None);
     Console.WriteLine($"Webhook set to: {webhookUrl}");
 }
