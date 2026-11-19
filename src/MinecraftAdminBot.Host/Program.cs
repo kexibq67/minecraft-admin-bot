@@ -2,6 +2,7 @@ using Telegram.Bot;
 using MinecraftAdminBot.Application.Abstractions;
 using MinecraftAdminBot.Application.Commands;
 using MinecraftAdminBot.Infrastructure.Telegram;
+using Telegram.Bot.Types;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,10 @@ builder.Services.AddScoped<CommandDispatcher>();
 
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+app.MapPost("/bot/webhook", async (Update update, CommandDispatcher dispatcher, CancellationToken ct) =>
+{
+    await dispatcher.DispatchAsync(update, ct);
+    return Results.Ok();
+});
 
 app.Run();
