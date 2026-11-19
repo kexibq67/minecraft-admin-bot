@@ -1,6 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <PackageReference Include="Telegram.Bot" Version="22.10.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MinecraftAdminBot.Domain\MinecraftAdminBot.Domain.csproj" />
   </ItemGroup>
 
