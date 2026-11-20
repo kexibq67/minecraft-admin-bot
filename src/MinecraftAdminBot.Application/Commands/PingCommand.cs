@@ -7,11 +7,7 @@ namespace MinecraftAdminBot.Application.Commands
     public class PingCommand : ITelegramCommand
     {
         private readonly ITelegramBotClient _botClient;
-
-        public PingCommand(ITelegramBotClient botClient)
-        {
-            _botClient = botClient;
-        }
+        public PingCommand(ITelegramBotClient botClient) => _botClient = botClient;
 
         public string Name => "/ping";
 
