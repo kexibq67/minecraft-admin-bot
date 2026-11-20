@@ -28,6 +28,7 @@ builder.Services.AddScoped<ILinkCodeRepository, LinkCodeRepository>();
 // --- Application services ---
 builder.Services.AddScoped<IUserAuthorizationService, UserAuthorizationService>();
 builder.Services.AddScoped<IPlayerLinkingService, PlayerLinkingService>();
+builder.Services.AddScoped<IRoleManagementService, RoleManagementService>();
 
 // --- Telegram infrastructure ---
 builder.Services.AddScoped<IServerContextResolver, ChatServerContextResolver>();
@@ -37,6 +38,9 @@ builder.Services.AddScoped<CommandDispatcher>();
 builder.Services.AddScoped<ITelegramCommand, PingCommand>();
 builder.Services.AddScoped<ITelegramCommand, LinkCommand>();
 builder.Services.AddScoped<ITelegramCommand, WhoAmICommand>();
+builder.Services.AddScoped<ITelegramCommand, RoleCommand>();
+builder.Services.AddScoped<ITelegramCommand, PlayersCommand>();
+builder.Services.AddScoped<ITelegramCommand, UnlinkCommand>();
 
 var app = builder.Build();
 
