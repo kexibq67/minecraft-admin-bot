@@ -12,6 +12,6 @@ namespace MinecraftAdminBot.Application.Abstractions
         /// <summary>
         /// Асинхронное выполнение команды
         /// </summary>
-        Task ExecuteAsync(Update update, CancellationToken cancellationToken);
+        Task ExecuteAsync(Update update, CancellationToken ct);
     }
 }
